@@ -1,0 +1,131 @@
+.JourneyLinesWithCirlesAsNodes-Container {
+  .chart-container {
+    margin-top: 20px;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1490196078);
+    background-color: #ffffff;
+    border-radius: 4px;
+    width: 98%;
+    box-sizing: border-box;
+    margin-left: 15px;
+    padding: 10px 0 0;
+  }
+  .journey-line-node-chart-container {
+    margin: 0rem 0 0 1rem;
+    width: 95%;
+  }
+
+  .node-title {
+    font-size: 0.62rem;
+    letter-spacing: 0.3px;
+    color: #333333;
+    font-family: "Graphik";
+    opacity: 0.75;
+    text-shadow: 2px -2px 2px #ffff;
+  }
+
+  .node-value {
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+    color: #808080;
+    text-shadow: 2px -2px 2px #ffff;
+  }
+
+  .node-percentage {
+    font-size: 1.25rem;
+    letter-spacing: 0.3px;
+    font-weight: 800;
+    color: #333333;
+    opacity: 1;
+  }
+
+  .journey-line-node-chart-sections {
+    font-size: 0.7rem;
+    letter-spacing: 0.3px;
+    fill: #402177;
+    font-family: "Graphik";
+    font-weight: 400;
+  }
+
+  .node-percentage-change-pos {
+    fill: #00c48c;
+    font-size: 0.6rem;
+    letter-spacing: 0.3px;
+    font-weight: 800;
+    font-family: "Graphik";
+  }
+
+  .node-percentage-change-neg {
+    fill: #ff647c;
+    font-size: 0.6rem;
+    letter-spacing: 0.3px;
+    font-weight: 800;
+    font-family: "Graphik";
+  }
+
+  .node-percentage-change-pos-inactive {
+    fill: #e9e9e9;
+    font-size: 0.6rem;
+    letter-spacing: 0.3px;
+    font-weight: 800;
+    font-family: "Graphik";
+  }
+
+  .link {
+    box-shadow: 0px 10px 7px rgba(0, 0, 0, 0.15);
+  }
+
+  .circle {
+    cursor: pointer;
+  }
+
+  /* Desktop */
+  @media only screen and (min-width: 1561px) {
+  }
+
+  /* Laptop and bigger screens */
+  @media only screen and (max-width: 1560px) and (min-width: 1421px) {
+    .journey-line-node-chart-container {
+      width: 98%;
+    }
+  }
+
+  @media only screen and (max-width: 1420px) and (min-width: 1317px) {
+    .journey-line-node-chart-container {
+      width: 90%;
+    }
+  }
+
+  @media only screen and (max-width: 1317px) and (min-width: 1280px) {
+    .journey-line-node-chart-container {
+      width: 90%;
+      overflow: hidden;
+    }
+  }
+
+  @media only screen and (max-width: 1279px) and (min-width: 1063px) {
+    .journey-line-node-chart-container {
+      overflow: hidden;
+    }
+  }
+
+  @media only screen and (max-width: 1063px) and (min-width: 768px) {
+    .journey-line-node-chart-container {
+      overflow: hidden;
+    }
+  }
+
+  @media only screen and (max-width: 768px) and (min-width: 540px) {
+    .journey-line-node-chart-container {
+      overflow-x: scroll;
+    }
+  }
+
+  @media only screen and (max-width: 540px) and (min-width: 371px) {
+    .journey-line-node-chart-container {
+      overflow-x: scroll;
+    }
+  }
+
+  @media only screen and (max-width: 371px) {
+  }
+}
