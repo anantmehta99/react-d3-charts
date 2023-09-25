@@ -1,3 +1,4 @@
 ### Charts
 
-1.
+1. JourneyLinesWithCriclesAsNodes
+   ![Alt text](image.png)

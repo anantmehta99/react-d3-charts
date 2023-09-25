@@ -3,6 +3,8 @@ import dataForJourneyLinesAndNodesChart from "./Data";
 import * as d3 from "d3";
 
 const Chart = (props) => {
+  const { activeKPICharter } = props;
+  console.log("activeKPICharter", activeKPICharter);
   const xPosition = 125,
     yPosition = 400;
   const [nodeDataRaw, setNodeDataRaw] = useState([
@@ -531,7 +533,15 @@ const Chart = (props) => {
         .join("path")
         .attr("d", link)
         .attr("fill", "none")
-        .attr("stroke", (d) => d.fill)
+        .attr("stroke", (d) =>
+          activeKPICharter === "all" ||
+          d.parent == activeKPICharter ||
+          d.child == activeKPICharter ||
+          d.self === activeKPICharter ||
+          activeKPICharter === "monetizatoin"
+            ? d.fill
+            : "#e9e9e9"
+        )
         .attr("stroke-width", "11px")
         .attr("opacity", "0.6")
         .classed("link", true);
@@ -568,7 +578,15 @@ const Chart = (props) => {
         .join("path")
         .attr("d", linkForShadow)
         .attr("fill", "none")
-        .attr("stroke", "gray")
+        .attr("stroke", (d) =>
+          activeKPICharter === "all" ||
+          d.parent == activeKPICharter ||
+          d.child == activeKPICharter ||
+          d.self === activeKPICharter ||
+          activeKPICharter === "monetizatoin"
+            ? "gray"
+            : "none"
+        )
         .attr("stroke-width", "11px")
         .attr("opacity", "0.2")
         .classed("linkforshadow", true)
@@ -582,7 +600,15 @@ const Chart = (props) => {
         .attr("r", (d) => (d.name === "Exit" ? 0 : 5.5))
         .attr("cx", (d) => d.y)
         .attr("cy", (d) => d.x)
-        .attr("fill", "#3E1F76")
+        .attr("fill", (d) =>
+          activeKPICharter === "all" ||
+          d.parent == activeKPICharter ||
+          d.child == activeKPICharter ||
+          d.self === activeKPICharter ||
+          activeKPICharter === "monetizatoin"
+            ? "#3E1F76"
+            : "#e9e9e9"
+        )
         .attr("opacity", "0.8")
         // .classed("circle", true)
         .classed(
@@ -596,7 +622,15 @@ const Chart = (props) => {
         .data(nodeData)
         .join("text")
         .attr("font-size", "16px")
-        .attr("fill", "#333333")
+        .attr("fill", (d) =>
+          activeKPICharter === "all" ||
+          d.parent == activeKPICharter ||
+          d.child == activeKPICharter ||
+          d.self === activeKPICharter ||
+          activeKPICharter === "monetizatoin"
+            ? "#333333"
+            : "#e9e9e9"
+        )
         .attr("text-anchor", "middle")
         .attr("x", (d) => (d.name === "Exit" ? d.y + 3 : d.y))
         .attr("y", (d) => (d.name === "Exit" ? d.x + 2 : d.x + 17))
@@ -610,7 +644,15 @@ const Chart = (props) => {
         .attr("text-anchor", "middle")
         .attr("x", (d) => (d.name === "Exit" ? d.y + 3 : d.y))
         .attr("y", (d) => (d.name === "Exit" ? d.x + 36 : d.x + 48))
-        .attr("fill", "#808080")
+        .attr("fill", (d) =>
+          activeKPICharter === "all" ||
+          d.parent == activeKPICharter ||
+          d.child == activeKPICharter ||
+          d.self === activeKPICharter ||
+          activeKPICharter === "monetizatoin"
+            ? "#808080"
+            : "#e9e9e9"
+        )
         .classed("node-value", true)
         .text((d) => parseFloat(d.value).toFixed(1));
 
@@ -622,7 +664,15 @@ const Chart = (props) => {
         .attr("x", (d) => (d.name === "Exit" ? d.y + 3 : d.y))
         .attr("y", (d) => (d.name === "Exit" ? d.x + 22 : d.x + 35))
         .classed("node-percentage", true)
-        .attr("fill", "#333333")
+        .attr("fill", (d) =>
+          activeKPICharter === "all" ||
+          d.parent == activeKPICharter ||
+          d.child == activeKPICharter ||
+          d.self === activeKPICharter ||
+          activeKPICharter === "monetizatoin"
+            ? "#333333"
+            : "#e9e9e9"
+        )
         .text((d) => `${d.percentageValue}%`);
 
       svg
@@ -637,9 +687,15 @@ const Chart = (props) => {
             `${d.percentageChage !== "Data N.A." ? d.percentageChage : "--"}%`
         )
         .attr("class", (d) =>
-          d.percentageChage >= 0
-            ? "node-percentage-change-pos"
-            : "node-percentage-change-neg"
+          activeKPICharter === "all" ||
+          d.parent == activeKPICharter ||
+          d.child == activeKPICharter ||
+          d.self === activeKPICharter ||
+          activeKPICharter === "monetizatoin"
+            ? d.percentageChage >= 0
+              ? "node-percentage-change-pos"
+              : "node-percentage-change-neg"
+            : "node-percentage-change-pos-inactive"
         );
 
       svg
@@ -652,7 +708,12 @@ const Chart = (props) => {
         .classed("journey-line-node-chart-sections", true)
         .text((d) => `${d.name}`);
     }
-  }, [dataForJourneyLinesAndNodesChart, nodeDataRaw, linkData]);
+  }, [
+    dataForJourneyLinesAndNodesChart,
+    nodeDataRaw,
+    linkData,
+    activeKPICharter,
+  ]);
 
   return (
     <div className="journey-line-node-chart-container">
